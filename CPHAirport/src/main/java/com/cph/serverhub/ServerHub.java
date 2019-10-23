@@ -51,7 +51,6 @@ public class ServerHub implements IAdministrationListener, ITaxiListener, IGroun
 
     public ArrayList<String> onAdministrationRequestFlightInfo() {
         // get FlightInfo
-
-        administrationService.sendFlightInfo(/* Flight Info */);
+        return new ArrayList<String>();
     }
 }
