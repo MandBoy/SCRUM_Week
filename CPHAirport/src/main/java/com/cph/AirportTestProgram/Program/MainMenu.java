@@ -1,8 +1,8 @@
-package com.cph.AirportTestProgramLind.Program;
+package com.cph.AirportTestProgram.Program;
 
-import com.cph.AirportTestProgramLind.MenuOptions.Administration;
-import com.cph.AirportTestProgramLind.MenuOptions.GroundControl;
-import com.cph.AirportTestProgramLind.MenuOptions.Simulation;
+import com.cph.AirportTestProgram.MenuOptions.Administration;
+import com.cph.AirportTestProgram.MenuOptions.GroundControl;
+import com.cph.AirportTestProgram.MenuOptions.Simulation;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package com.cph.AirportTestProgramLind.models;
+package com.cph.AirportTestProgram.models;
 
 import java.time.LocalDateTime;
 

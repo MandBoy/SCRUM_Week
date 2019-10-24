@@ -1,4 +1,4 @@
-package com.cph.AirportTestProgramLind.persistence.sql;
+package com.cph.AirportTestProgram.persistence.sql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

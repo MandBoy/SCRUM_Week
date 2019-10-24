@@ -1,7 +1,7 @@
 package com.cph.OtherProgram.serverhub;
 
-import com.cph.AirportTestProgramLind.administration.server.IAdministrationService;
-import com.cph.AirportTestProgramLind.administration.server.listener.IAdministrationListener;
+import com.cph.AirportTestProgram.administration.server.IAdministrationService;
+import com.cph.AirportTestProgram.administration.server.listener.IAdministrationListener;
 import com.cph.OtherProgram.groundcontrol.server.IGroundControlService;
 import com.cph.OtherProgram.groundcontrol.server.listeners.IGroundControlListener;
 import com.cph.OtherProgram.taxi.server.ITaxiService;

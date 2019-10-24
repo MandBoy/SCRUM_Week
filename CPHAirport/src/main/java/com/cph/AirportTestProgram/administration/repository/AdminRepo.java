@@ -1,9 +1,9 @@
-package com.cph.AirportTestProgramLind.administration.repository;
+package com.cph.AirportTestProgram.administration.repository;
 
-import com.cph.AirportTestProgramLind.models.Flight;
-import com.cph.AirportTestProgramLind.models.Station;
-import com.cph.AirportTestProgramLind.models.StationInfo;
-import com.cph.AirportTestProgramLind.persistence.sql.ConnectionFactory;
+import com.cph.AirportTestProgram.models.Flight;
+import com.cph.AirportTestProgram.models.Station;
+import com.cph.AirportTestProgram.models.StationInfo;
+import com.cph.AirportTestProgram.persistence.sql.ConnectionFactory;
 
 import java.sql.*;
 import java.time.LocalDateTime;

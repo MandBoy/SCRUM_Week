@@ -1,8 +1,8 @@
-package com.cph.AirportTestProgramLind.MenuOptions;
+package com.cph.AirportTestProgram.MenuOptions;
 
-import com.cph.AirportTestProgramLind.administration.repository.AdminRepo;
-import com.cph.AirportTestProgramLind.models.Flight;
-import com.cph.AirportTestProgramLind.models.StationInfo;
+import com.cph.AirportTestProgram.administration.repository.AdminRepo;
+import com.cph.AirportTestProgram.models.Flight;
+import com.cph.AirportTestProgram.models.StationInfo;
 
 import java.util.List;
 import java.util.Scanner;

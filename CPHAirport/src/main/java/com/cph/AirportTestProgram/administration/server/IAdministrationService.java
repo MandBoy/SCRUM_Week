@@ -1,6 +1,6 @@
-package com.cph.AirportTestProgramLind.administration.server;
+package com.cph.AirportTestProgram.administration.server;
 
-import com.cph.AirportTestProgramLind.administration.server.listener.IAdministrationListener;
+import com.cph.AirportTestProgram.administration.server.listener.IAdministrationListener;
 
 public interface IAdministrationService {
     void setListener(IAdministrationListener listener);

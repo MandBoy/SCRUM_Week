@@ -1,4 +1,4 @@
-package com.cph.AirportTestProgramLind.Program;
+package com.cph.AirportTestProgram.Program;
 
 import java.util.Scanner;
 
