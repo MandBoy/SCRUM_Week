@@ -14,6 +14,7 @@ public class Administration{
         go = true;
         while(go){
             menu();
+            System.out.print("Your Pick: ");
             switch(scanner.nextInt()){
                 case 1:
                     //getFlightInfo();
@@ -41,7 +42,7 @@ public class Administration{
                 "2: Get StationInfo \n" +
                 "3: Get Flight Station \n" +
                 "4: Get Crew status \n" +
-                "9: Exit/Stop \n";
+                "9: Exit/Stop\n";
         System.out.println(menu);
     }
 

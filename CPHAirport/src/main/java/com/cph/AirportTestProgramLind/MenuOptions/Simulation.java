@@ -10,6 +10,7 @@ public class Simulation{
         while(go){
             menu();
             getTabels();
+            System.out.print("Your Pick: ");
             switch(scanner.nextInt()){
                 case 1:
                 case 2:

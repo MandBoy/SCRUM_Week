@@ -8,6 +8,7 @@ public class GroundControl{
         go = true;
         while(go){
             menu();
+            System.out.print("Your Pick: ");
             switch(scanner.nextInt()){
                 case 1:
                     //Begin Debording Procedure. //People off //Baggage off.
