@@ -12,10 +12,11 @@ public class Flight {
     private int departureOffset;
     private String fromDestination;
     private String toDestination;
+    private int planeSize;
 
     public Flight(){}
 
-    public Flight(int id, String serialNo, LocalDateTime arrivalTime, LocalDateTime departureTime, int arrivalOffset, int departureOffset, String fromDestination, String toDestination) {
+    public Flight(int id, String serialNo, LocalDateTime arrivalTime, LocalDateTime departureTime, int arrivalOffset, int departureOffset, String fromDestination, String toDestination, int planeSize) {
         this.id = id;
         this.serialNo = serialNo;
         this.arrivalTime = arrivalTime;
@@ -24,6 +25,15 @@ public class Flight {
         this.departureOffset = departureOffset;
         this.fromDestination = fromDestination;
         this.toDestination = toDestination;
+        this.planeSize = planeSize;
+    }
+
+    public int getPlaneSize() {
+        return planeSize;
+    }
+
+    public void setPlaneSize(int planeSize) {
+        this.planeSize = planeSize;
     }
 
     public int getId() {
@@ -111,7 +121,8 @@ public class Flight {
                 + "Departure time: " + getDepartureTime() + "\n"
                 + "Expected departure time: " + expectedDeparture + "\n"
                 + "From destination: " + getFromDestination() + "\n"
-                + "To destination: " + getToDestination();
+                + "To destination: " + getToDestination() + "\n"
+                + "Size of flight: " + getPlaneSize();
 
         return flightInfo;
     }
