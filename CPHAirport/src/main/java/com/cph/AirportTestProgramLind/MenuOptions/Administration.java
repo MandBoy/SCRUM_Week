@@ -28,6 +28,7 @@ public class Administration{
                     //getCrewStatus();
                     break;
                 case 9:
+                    System.out.println("Going back...");
                     go = false;
                     break;
             }
@@ -35,9 +36,10 @@ public class Administration{
     }
     public static void menu(){
         String menu =
-                "1: Get FlightInfo\n" +
-                "2: Get StationInfo\n" +
-                "3: Get Flight Station\n " +
+                "---Administartion Menu--- \n" +
+                "1: Get FlightInfo \n" +
+                "2: Get StationInfo \n" +
+                "3: Get Flight Station \n" +
                 "4: Get Crew status \n" +
                 "9: Exit/Stop \n";
         System.out.println(menu);

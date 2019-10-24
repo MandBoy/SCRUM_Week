@@ -15,6 +15,7 @@ public class MainMenu{
         go = true;
         while(go){
             menu();
+            System.out.print("Your pick: ");
             switch(scanner.nextInt()){
                 case 1:
                     administration = new Administration(scanner, go);
@@ -35,11 +36,11 @@ public class MainMenu{
 
     public static void menu(){
         String menu =
+                "---Main Menu---\n" +
                 "1: Administration \n" +
                 "2: Ground control \n" +
                 "3: Simulation \n" +
                 "9: Exit/Stop \n" ;
         System.out.println(menu);
-
     }
 }

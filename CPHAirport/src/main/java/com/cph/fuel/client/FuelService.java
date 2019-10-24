@@ -12,14 +12,10 @@ public class FuelService {
 
 
     public FuelService()
-    {
-
-    }
-
+    {}
 
     //her siger vi at vi allerede ved at det er en TANK-kode
     public void receiveFuelRequest(String message) { //flightNo size stall
-
         StringTokenizer st = new StringTokenizer(message, " ");
         String flightNo = st.nextToken();
         String size = st.nextToken();
@@ -69,21 +65,14 @@ public class FuelService {
 
         switch (size) {
             case "small":
-
                 fillingNow(10);
                 break;
-
             case "medium" :
-
                fillingNow(20);
                 break;
-
             case "large" :
-
                 fillingNow(30);
                 break;
-
-
                 default:
                     System.out.println("Unvalid size");
                     break;
