@@ -1,11 +1,12 @@
-import com.cph.administration.repository.AdminRepo;
-import com.cph.models.Station;
+package com.cph.administration.repository;
+
+import com.cph.AirportTestProgram.administration.repository.AdminRepo;
+import com.cph.AirportTestProgram.models.Station;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.engine.JupiterTestEngine;
+
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
-
-
 
 public class AdminRepoTest {
 
