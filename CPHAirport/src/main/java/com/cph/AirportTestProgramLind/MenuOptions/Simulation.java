@@ -31,7 +31,7 @@ public class Simulation{
                 "3: Update \n" +
                 "4: Delete \n" +
                 "5: Run random simulation \n" +
-                "9: Go Back\n";
+                "9: Exit/stop\n";
         System.out.println(menu);
     }
     public static void getTabels(){
