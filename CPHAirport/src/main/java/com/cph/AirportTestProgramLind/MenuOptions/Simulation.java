@@ -1,17 +1,8 @@
 package com.cph.AirportTestProgramLind.MenuOptions;
 
-import com.cph.AirportTestProgramLind.CRUD.Create;
-import com.cph.AirportTestProgramLind.CRUD.Delete;
-import com.cph.AirportTestProgramLind.CRUD.Read;
-import com.cph.AirportTestProgramLind.CRUD.Update;
-
 import java.util.Scanner;
 
 public class Simulation{
-    private Create create;
-    private Read read;
-    private Update update;
-    private Delete delete;
     private int tabel;
 
     public Simulation(Scanner scanner, boolean go){
@@ -21,7 +12,6 @@ public class Simulation{
             getTabels();
             switch(scanner.nextInt()){
                 case 1:
-                    create = new Create();
                 case 2:
                 case 3:
                 case 4:
@@ -34,8 +24,11 @@ public class Simulation{
                 "2: Read \n " +
                 "3: Update \n " +
                 "4: Delete \n " +
+                "5: Run random simulation \n" +
                 "9: Exit/stop \n ";
         System.out.println(menu);
     }
-    public static void getTabels(){}
+    public static void getTabels(){
+
+    }
 }
