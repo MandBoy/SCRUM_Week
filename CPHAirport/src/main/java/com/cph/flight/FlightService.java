@@ -5,8 +5,6 @@ import com.cph.flight.shared.FlightInfo;
 
 public class FlightService
 {
-
-
     public FlightService() {
         init();
     }
@@ -14,10 +12,7 @@ public class FlightService
     private void init() {
         generateMock();
     }
-
-    private void generateMock() {
-
-    }
+    private void generateMock() {}
 
     public AircraftInfo getAircraftInfoFromFlightInfo(FlightInfo flightInfo) {
         AircraftInfo aircraftInfo = null;
