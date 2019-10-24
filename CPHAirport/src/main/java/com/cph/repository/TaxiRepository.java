@@ -1,6 +1,6 @@
 package com.cph.repository;
 
-import com.cph.taxi.server.repository.ITaxiRepository;
+import com.cph.OtherProgram.taxi.server.repository.ITaxiRepository;
 
 public class TaxiRepository implements ITaxiRepository
 {
