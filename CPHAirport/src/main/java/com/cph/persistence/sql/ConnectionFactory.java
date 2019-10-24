@@ -13,7 +13,7 @@ public class ConnectionFactory {
 
     public ConnectionFactory() { }
 
-    public Connection createNewConnection() throws SQLException {
+    public static Connection createNewConnection() throws SQLException {
         return DriverManager.getConnection(connectionUrl, username, password);
     }
 }

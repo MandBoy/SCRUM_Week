@@ -51,13 +51,13 @@ public class FuelService {
     public void sendNO(String flightNo)
     {
         String message = "T_NO " + flightNo;
-        out.writeUTF(message);
+        //out.writeUTF(message);
     }
 
     public void sendOK(String flightNo){
 
         String message = "T_OK " + flightNo;
-        out.writeUTF(message);
+        //out.writeUTF(message);
     }
 
     //stall skal bruges hvis vi regner transporttid ud
@@ -114,7 +114,7 @@ public class FuelService {
     public void notifyOfFullTank(String flightNo)
     {
         String message = "TDON " + flightNo;
-        out.writeUTF(message);
+        //out.writeUTF(message);
     }
 
 

@@ -20,9 +20,9 @@ public class ServerApp
         taxiSvc = new TaxiService(1338, taxiRepository);
 
 
-        ServerHub serverHub = new ServerHub(groundControlSvc, taxiSvc);
+       // ServerHub serverHub = new ServerHub(groundControlSvc, taxiSvc);
 
-        new ServerApp(serverHub);
+       // new ServerApp(serverHub);
     }
 
     private ServerApp(ServerHub serverHub) {
