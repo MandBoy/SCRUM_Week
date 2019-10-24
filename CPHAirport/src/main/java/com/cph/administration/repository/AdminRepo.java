@@ -6,6 +6,7 @@ import com.cph.models.StationInfo;
 import com.cph.persistence.sql.ConnectionFactory;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,8 +47,10 @@ public class AdminRepo {
                 String fromDestination = res.getString("from_destination");
                 String toDestination = res.getString("to_destination");
 
+                LocalDateTime arrival1 = arrival.toLocalDateTime();
+                LocalDateTime depature1 = depature.toLocalDateTime();
 
-                flights.add(new Flight(id, serialNo, arrival, depature, arrivalOffset, departureOffset, fromDestination, toDestination));
+                flights.add(new Flight(id, serialNo, arrival1, depature1, arrivalOffset, departureOffset, fromDestination, toDestination));
 
             }
 
