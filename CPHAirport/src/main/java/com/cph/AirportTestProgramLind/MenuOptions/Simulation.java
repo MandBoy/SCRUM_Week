@@ -1,4 +1,9 @@
-package com.cph.AirportTestProgram;
+package com.cph.AirportTestProgramLind.MenuOptions;
+
+import com.cph.AirportTestProgramLind.CRUD.Create;
+import com.cph.AirportTestProgramLind.CRUD.Delete;
+import com.cph.AirportTestProgramLind.CRUD.Read;
+import com.cph.AirportTestProgramLind.CRUD.Update;
 
 import java.util.Scanner;
 
@@ -32,7 +37,5 @@ public class Simulation{
                 "9: Exit/stop \n ";
         System.out.println(menu);
     }
-    public static void getTabels(){
-
-    }
+    public static void getTabels(){}
 }

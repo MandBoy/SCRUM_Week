@@ -1,4 +1,9 @@
-package com.cph.AirportTestProgram;
+package com.cph.AirportTestProgramLind.MenuOptions;
+
+import com.cph.AirportTestProgramLind.Models.CrewStatus;
+import com.cph.AirportTestProgramLind.Models.FlightInfo;
+import com.cph.AirportTestProgramLind.Models.FlightStation;
+import com.cph.AirportTestProgramLind.Models.StationInfo;
 
 import java.util.ArrayList;
 import java.util.Scanner;

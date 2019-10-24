@@ -1,4 +1,4 @@
-package com.cph.AirportTestProgram;
+package com.cph.AirportTestProgramLind.MenuOptions;
 
 import java.util.Scanner;
 

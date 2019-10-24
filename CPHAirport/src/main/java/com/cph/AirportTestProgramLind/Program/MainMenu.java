@@ -1,13 +1,17 @@
-package com.cph.AirportTestProgram;
+package com.cph.AirportTestProgramLind.Program;
+
+import com.cph.AirportTestProgramLind.MenuOptions.Administration;
+import com.cph.AirportTestProgramLind.MenuOptions.GroundControl;
+import com.cph.AirportTestProgramLind.MenuOptions.Simulation;
 
 import java.util.Scanner;
 
-public class Airport{
+public class MainMenu{
     private Administration administration;
     private GroundControl groundControl;
     private Simulation simulation;
 
-    public Airport(Scanner scanner, boolean go){
+    public MainMenu(Scanner scanner, boolean go){
         go = true;
         while(go){
             menu();
