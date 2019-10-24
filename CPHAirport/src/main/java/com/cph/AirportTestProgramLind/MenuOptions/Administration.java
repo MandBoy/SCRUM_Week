@@ -1,19 +1,14 @@
 package com.cph.AirportTestProgramLind.MenuOptions;
 
-import com.cph.AirportTestProgramLind.Models.CrewStatus;
-import com.cph.AirportTestProgramLind.Models.FlightInfo;
-import com.cph.AirportTestProgramLind.Models.FlightStation;
-import com.cph.AirportTestProgramLind.Models.StationInfo;
+import com.cph.administration.repository.AdminRepo;
+import com.cph.models.StationInfo;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Administration{
-    private ArrayList<FlightInfo> flightInfo = new ArrayList<FlightInfo>();
-    private ArrayList<StationInfo> stationInfo = new ArrayList<StationInfo>();
-    private ArrayList<FlightStation> flightStation = new ArrayList<FlightStation>();
-    private ArrayList<CrewStatus> crewStatus = new ArrayList<CrewStatus>();
 
+    private AdminRepo repo = new AdminRepo();
 
     public Administration(Scanner scanner, boolean go){
         go = true;
@@ -21,16 +16,16 @@ public class Administration{
             menu();
             switch(scanner.nextInt()){
                 case 1:
-                    getFlightInfo(flightInfo);
+                    //getFlightInfo();
                     break;
                 case 2:
-                    getStationInfo(stationInfo);
+                    getStationInfo();
                     break;
                 case 3:
-                    getFlightStation(flightStation);
+                    //getFlightStation();
                     break;
                 case 4:
-                    getCrewStatus(crewStatus);
+                    //getCrewStatus();
                     break;
                 case 9:
                     go = false;
@@ -48,29 +43,37 @@ public class Administration{
         System.out.println(menu);
     }
 
-    public static void getFlightInfo(ArrayList<FlightInfo> flightInfo){
+    /*
+    public void getFlightInfo(){
         //flightInfo = FlightInfo.getInfo();
         for(FlightInfo info : flightInfo){
             System.out.println(info);
         }
-    }
-    public static void getStationInfo(ArrayList<StationInfo> stationInfo){
+    }*/
+
+    public void getStationInfo(){
+        List<StationInfo> infoList = repo.seeAllOccupiedStations();
+
         //stationInfo = StationInfo.getInfo();
-        for(StationInfo info : stationInfo){
+        for(StationInfo info : infoList){
             System.out.println(info);
         }
 
     }
-    public static void getFlightStation(ArrayList<FlightStation> flightStation){
+
+    /*
+    public void getFlightStation(){
+
+
         //flightStation = FlightStation.getInfo();
         for(FlightStation info : flightStation){
             System.out.println(info);
         }
     }
-    public static void getCrewStatus(ArrayList<CrewStatus> crewStatus){
+    public void getCrewStatus(){
         //crewStatus = CrewStatus.getInfo();
         for(CrewStatus info : crewStatus){
             System.out.println(info);
         }
-    }
+    }*/
 }
