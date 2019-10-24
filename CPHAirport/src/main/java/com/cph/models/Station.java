@@ -7,6 +7,7 @@ public class Station {
     private int type;
 
 
+
     public Station(){}
 
     public Station(int ID, boolean isActive, int type) {
