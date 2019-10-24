@@ -27,4 +27,11 @@ public class StationInfo {
     public void setSerial_number(int serial_number) {
         this.serial_number = serial_number;
     }
+
+    public String toString()
+    {
+        String info = "Stall number " + getId() + "is occupied by " + getSerial_number();
+
+        return info;
+    }
 }
