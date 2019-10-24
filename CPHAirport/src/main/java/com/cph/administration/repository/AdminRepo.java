@@ -6,6 +6,7 @@ import com.cph.models.StationInfo;
 import com.cph.persistence.sql.ConnectionFactory;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class AdminRepo {
     public AdminRepo(){}
 
     private final String SELECT_ALL_STALLS = "SELECT * FROM station";
-    private final String SELECT_ALL_STALLS_WITH_FLIGHTS = "SELECT flight.serial_number, station.id "
+    private final String SELECT_ALL_STALLS_WITH_FLIGHTS = "SELECT flight.route_number, station.id "
     + "FROM flight__station JOIN station ON flight__station.fk_station_id = station.id "
     + "JOIN flight ON flight.id = flight__station.fk_flight_id "
     + "WHERE flight__station.reserved_to IS NULL";
@@ -45,9 +46,12 @@ public class AdminRepo {
                 int departureOffset = res.getInt("departure_offset");
                 String fromDestination = res.getString("from_destination");
                 String toDestination = res.getString("to_destination");
+                int planeSize = res.getInt("plane_size");
 
+                LocalDateTime arrival1 = arrival.toLocalDateTime();
+                LocalDateTime depature1 = depature.toLocalDateTime();
 
-                flights.add(new Flight(id, serialNo, arrival, depature, arrivalOffset, departureOffset, fromDestination, toDestination));
+                flights.add(new Flight(id, serialNo, arrival1, depature1, arrivalOffset, departureOffset, fromDestination, toDestination, planeSize));
 
             }
 
@@ -75,7 +79,7 @@ public class AdminRepo {
             while(res.next())
             {
 
-                int serialNo = res.getInt("serial_number");
+                String serialNo = res.getString("route_number");
                 int stationId = res.getInt("id");
 
                 stations.add(new StationInfo(stationId, serialNo));

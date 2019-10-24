@@ -1,6 +1,7 @@
 package com.cph.AirportTestProgramLind.MenuOptions;
 
 import com.cph.administration.repository.AdminRepo;
+import com.cph.models.Flight;
 import com.cph.models.StationInfo;
 
 import java.util.List;
@@ -14,9 +15,10 @@ public class Administration{
         go = true;
         while(go){
             menu();
+            System.out.print("Your Pick: ");
             switch(scanner.nextInt()){
                 case 1:
-                    //getFlightInfo();
+                    getFlightInfo();
                     break;
                 case 2:
                     getStationInfo();
@@ -28,6 +30,7 @@ public class Administration{
                     //getCrewStatus();
                     break;
                 case 9:
+                    System.out.println("Going back...");
                     go = false;
                     break;
             }
@@ -35,28 +38,37 @@ public class Administration{
     }
     public static void menu(){
         String menu =
-                "1: Get FlightInfo\n" +
-                "2: Get StationInfo\n" +
-                "3: Get Flight Station\n " +
+                "---Administration Menu--- \n" +
+                "1: Get FlightInfo \n" +
+                "2: Get StationInfo \n" +
+                "3: Get Flight Station \n" +
                 "4: Get Crew status \n" +
-                "9: Exit/Stop \n";
+                "9: Exit/Stop\n";
         System.out.println(menu);
     }
 
-    /*
     public void getFlightInfo(){
-        //flightInfo = FlightInfo.getInfo();
-        for(FlightInfo info : flightInfo){
-            System.out.println(info);
+
+        List<Flight> flights = repo.seeAllFlightInfo();
+
+        if (flights.size() > 0) {
+            for (Flight info : flights) {
+                System.out.println(info + "\n");
+            }
+        } else {
+            System.out.println("No flight info to show.");
         }
-    }*/
+    }
 
     public void getStationInfo(){
         List<StationInfo> infoList = repo.seeAllOccupiedStations();
 
-        //stationInfo = StationInfo.getInfo();
-        for(StationInfo info : infoList){
-            System.out.println(info);
+        if (infoList.size() > 0) {
+            for (StationInfo info : infoList) {
+                System.out.println(info);
+            }
+        } else {
+            System.out.println("No station info to show.");
         }
 
     }
