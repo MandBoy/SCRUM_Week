@@ -1,6 +1,5 @@
 # IntelliJ
-.idea
-out
+*.xml
 *.kotlin_module
 
 # Compiled class file
