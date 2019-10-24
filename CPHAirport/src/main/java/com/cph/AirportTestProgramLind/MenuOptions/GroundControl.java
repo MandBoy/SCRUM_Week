@@ -1,7 +1,6 @@
 package com.cph.AirportTestProgramLind.MenuOptions;
 
 import java.util.Scanner;
-import java.util.Timer;
 
 public class GroundControl{
     public GroundControl(Scanner scanner, boolean go){

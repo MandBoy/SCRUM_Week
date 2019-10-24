@@ -1,16 +1,14 @@
 package com.cph.AirportTestProgramLind.MenuOptions;
 
-import com.cph.administration.repository.AdminRepo;
-import com.cph.models.Flight;
-import com.cph.models.StationInfo;
+import com.cph.AirportTestProgramLind.administration.repository.AdminRepo;
+import com.cph.AirportTestProgramLind.models.Flight;
+import com.cph.AirportTestProgramLind.models.StationInfo;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class Administration{
-
     private AdminRepo repo = new AdminRepo();
-
     public Administration(Scanner scanner, boolean go){
         go = true;
         while(go){
@@ -48,9 +46,7 @@ public class Administration{
     }
 
     public void getFlightInfo(){
-
         List<Flight> flights = repo.seeAllFlightInfo();
-
         if (flights.size() > 0) {
             for (Flight info : flights) {
                 System.out.println(info + "\n");
@@ -59,10 +55,8 @@ public class Administration{
             System.out.println("No flight info to show.");
         }
     }
-
     public void getStationInfo(){
         List<StationInfo> infoList = repo.seeAllOccupiedStations();
-
         if (infoList.size() > 0) {
             for (StationInfo info : infoList) {
                 System.out.println(info);
@@ -70,13 +64,9 @@ public class Administration{
         } else {
             System.out.println("No station info to show.");
         }
-
     }
-
     /*
     public void getFlightStation(){
-
-
         //flightStation = FlightStation.getInfo();
         for(FlightStation info : flightStation){
             System.out.println(info);

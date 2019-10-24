@@ -29,7 +29,6 @@ public class MainMenu{
                 case 9:
                     go = false;
                     break;
-
             }
         }
     }
