@@ -46,11 +46,12 @@ public class AdminRepo {
                 int departureOffset = res.getInt("departure_offset");
                 String fromDestination = res.getString("from_destination");
                 String toDestination = res.getString("to_destination");
+                int planeSize = res.getInt("plane_size");
 
                 LocalDateTime arrival1 = arrival.toLocalDateTime();
                 LocalDateTime depature1 = depature.toLocalDateTime();
 
-                flights.add(new Flight(id, serialNo, arrival1, depature1, arrivalOffset, departureOffset, fromDestination, toDestination));
+                flights.add(new Flight(id, serialNo, arrival1, depature1, arrivalOffset, departureOffset, fromDestination, toDestination, planeSize));
 
             }
 
