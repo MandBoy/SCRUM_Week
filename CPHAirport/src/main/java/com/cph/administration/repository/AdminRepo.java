@@ -19,7 +19,7 @@ public class AdminRepo {
     public AdminRepo(){}
 
     private final String SELECT_ALL_STALLS = "SELECT * FROM station";
-    private final String SELECT_ALL_STALLS_WITH_FLIGHTS = "SELECT flight.serial_number, station.id "
+    private final String SELECT_ALL_STALLS_WITH_FLIGHTS = "SELECT flight.route_number, station.id "
     + "FROM flight__station JOIN station ON flight__station.fk_station_id = station.id "
     + "JOIN flight ON flight.id = flight__station.fk_flight_id "
     + "WHERE flight__station.reserved_to IS NULL";
@@ -78,7 +78,7 @@ public class AdminRepo {
             while(res.next())
             {
 
-                int serialNo = res.getInt("serial_number");
+                String serialNo = res.getString("route_number");
                 int stationId = res.getInt("id");
 
                 stations.add(new StationInfo(stationId, serialNo));
