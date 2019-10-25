@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class Administration{
     private AdminRepo repo = new AdminRepo();
+
     public Administration(Scanner scanner, boolean go){
         go = true;
         while(go){
