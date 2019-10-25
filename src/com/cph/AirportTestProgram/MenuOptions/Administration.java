@@ -28,6 +28,14 @@ public class Administration{
                 case 4:
                     //getCrewStatus();
                     break;
+                case 5 :
+                    System.out.println("Please select flight: ");
+                    String flightNo = scanner.next();
+                    System.out.println("Write number of minutes delayed: ");
+                    int delayed = scanner.nextInt();
+                    repo.changeDeparture(delayed, flightNo);
+                    System.out.println("Offset changed for flight " + flightNo + " to " + delayed + " minutes");
+                    break;
                 case 9:
                     System.out.println("Going back...");
                     go = false;
@@ -42,6 +50,7 @@ public class Administration{
                 "2: Get StationInfo \n" +
                 "3: Get Flight Station \n" +
                 "4: Get Crew status \n" +
+                "5: Set delay on a flight in minutes \n" +
                 "9: Exit/Stop\n";
         System.out.println(menu);
     }
@@ -66,6 +75,7 @@ public class Administration{
             System.out.println("No station info to show.");
         }
     }
+
     /*
     public void getFlightStation(){
         //flightStation = FlightStation.getInfo();
