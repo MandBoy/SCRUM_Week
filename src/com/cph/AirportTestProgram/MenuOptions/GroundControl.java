@@ -1,13 +1,13 @@
 package com.cph.AirportTestProgram.MenuOptions;
 
-import com.cph.AirportTestProgram.models.Flight;
-
-import java.util.List;
+import com.cph.AirportTestProgram.administration.repository.AdminRepo;
+import com.cph.AirportTestProgram.models.Plane;
 import java.util.Scanner;
 
 public class GroundControl{
-    private int timeToTaxi;
-    private int flightSize;
+    private int timeToAction;
+    private AdminRepo adminRepo = new AdminRepo();
+    private Plane plane;
 
     public GroundControl(Scanner scanner, boolean go){
         go = true;
@@ -17,14 +17,15 @@ public class GroundControl{
             switch(scanner.nextInt()){
                 case 1:
                     //Taxi Arrival.
+                    plane = planeToWorkOn();
                     waitingStall();
                     assignStall();
-                    taxiArrival();
+                    taxiArrival(plane);
                     break;
                 case 2:
                     //Begin Debording Procedure. //People off //Baggage off.
-                    deboardPeople();
-                    deboardBaggage();
+                    deboardPeople(plane);
+                    deboardBaggage(plane);
                     break;
                 case 3:
                     //Begin Cleaning Procedure. //Clean //Refuel //Baggage on.
@@ -42,7 +43,7 @@ public class GroundControl{
                     break;
                 case 6:
                     //Move a plain.
-                    movePlain();
+                    movePlane();
                     break;
                 case 9:
                     System.out.println("Going back...");
@@ -63,90 +64,195 @@ public class GroundControl{
                 "9: Exit/Stop \n";
         System.out.println(menu);
     }
+    public Plane planeToWorkOn(){
+        Plane plane = new Plane();
+        return plane;
+    }
     public void waitingStall(){}
     public void assignStall(){}
-    public void taxiArrival(){
-        System.out.println("Plane taxing to stall begun...");
-        try {
-                Thread.sleep(timeToTaxi);
-                System.out.println("Plane Taxing: DONE! \n");
+    public void taxiArrival(Plane plane){
+        System.out.println("Plane: " + plane.getPlaneNumber() + " taxing to stall: " + plane.getStallNumber() + " begun...");
+        switch(plane.getPlaneSize()){
+            case 1:
+                timeToAction = 12000;
+                break;
+            case 2:
+                timeToAction = 10000;
+                break;
+            case 3:
+                timeToAction = 15000;
+                break;
+        }
+        try{
+                System.out.println("This will take: " + timeToAction + " seconds.");
+                Thread.sleep(timeToAction);
+                System.out.println("Plane Taxing: "+ plane.getPlaneNumber() + " to: " + plane.getStallNumber() + " DONE!\n");
             }
             catch(InterruptedException e) {
-                System.out.println("Plane Taxing: FAILED \n");
+                System.out.println("Plane Taxing: "+ plane.Number + " FAILED!\n");
             }
     }
-
-    public void deboardPeople(){
-        System.out.println("Plane deboarding people begun...");
-            try {
-                Thread.sleep(10000);
-                System.out.println("People deboarding: DONE! \n");
+    public void deboardPeople(Plane plane){
+        System.out.println("Plane: " + this.planeNumber + " deboarding people begun...");
+            switch(this.planeSize){
+                case 1:
+                    timeToAction = 5000;
+                case 2:
+                    timeToAction = 10000;
+                case 3:
+                    timeToAction = 15000;
+            }
+            try{
+                System.out.println("This will take: " + timeToAction + " seconds.");
+                Thread.sleep(timeToAction);
+                System.out.println("People deboarding: " + planeNumber + " DONE!\n");
             }
             catch(InterruptedException e) {
-                System.out.println("People debaording: FAILED \n");
+                System.out.println("People debaording: " + planeNumber + " FAILED!\n");
             }
     }
-    public void deboardBaggage() {
-        System.out.println("Plane deboarding baggage begun...");
+    public void deboardBaggage(int planeNumber, int planeSize){
+        System.out.println("Plane: " + planeNumber + " deboarding baggage begun...");
+        switch(planeSize){
+            case 1:
+                timeToAction = 10000;
+            case 2:
+                timeToAction = 15000;
+            case 3:
+                timeToAction = 20000;
+        }
         try{
-            Thread.sleep(15000);
-            System.out.println("Baggage deboarding: DONE! \n");
+            System.out.println("This will take: " + timeToAction + " seconds.");
+            Thread.sleep(timeToAction);
+            System.out.println("Baggage deboarding on plane: " + planeNumber + " DONE!\n");
         } catch (InterruptedException e) {
-            System.out.println("Baggage deboarding: FAILED! \n");
+            System.out.println("Baggage deboarding on plane: " +planeNumber + " FAILED!\n");
         }
     }
-    public void cleanPlane(){
-        System.out.println("Plane cleaning begun...");
+    public void cleanPlane(int planeNumber, int planeSize){
+        System.out.println("Plane: " + planeNumber + " cleaning begun...");
+        switch(planeSize){
+            case 1:
+                timeToAction = 30000;
+                break;
+            case 2:
+                timeToAction = 40000;
+                break;
+            case 3:
+                timeToAction = 60000;
+                break;
+        }
         try{
-            Thread.sleep(40000);
-            System.out.println("Plane Cleaning: DONE! \n");
+            System.out.println("This will take: " + timeToAction + "Seconds.");
+            Thread.sleep(timeToAction);
+            System.out.println("Plane Cleaning on plane: " + planeNumber + " DONE!\n");
         } catch (InterruptedException e) {
-            System.out.println("Plane Cleaning: FAILED! \n");
+            System.out.println("Plane Cleaning on plane: " + planeNumber + " FAILED!\n");
         }
     }
-    public void refuelPlane(){
+    public void refuelPlane(int planeNumber, int planeSize){
         System.out.println("Plane refueling begun...");
+        switch(planeSize){
+            case 1:
+                timeToAction = 10000;
+                break;
+            case 2:
+                timeToAction = 20000;
+                break;
+            case 3:
+                timeToAction = 30000;
+                break;
+        }
         try{
-            Thread.sleep(20000);
-            System.out.println("Plane Refueling: DONE \n");
+            System.out.println("This will take: " + timeToAction + " seconds.");
+            Thread.sleep(timeToAction);
+            System.out.println("Plane Refueling on plane: " + planeNumber + " DONE!\n");
         } catch (InterruptedException e) {
-            System.out.println("Plane Refueling: FAILED\n");
+            System.out.println("Plane Refueling on plane: " + planeNumber + " FAILED!\n");
         }
     }
-    public void baggageOn(){
-        System.out.println("Plane baggaging begun...");
+    public void baggageOn(int planeNumber, int planeSize){
+        System.out.println("Plane " + planeNumber + " baggaging begun...");
+        switch(planeSize){
+            case 1:
+                timeToAction = 15000;
+                break;
+            case 2:
+                timeToAction = 25000;
+                break;
+            case 3:
+                timeToAction = 35000;
+                break;
+        }
         try{
-            Thread.sleep(25000);
-            System.out.println("Plane Baggaging: DONE! \n");
+            System.out.println("This will take: " + timeToAction + " seconds.");
+            Thread.sleep(timeToAction);
+            System.out.println("Plane Baggaging on plane: " + planeNumber + " DONE!\n");
         } catch (InterruptedException e) {
-            System.out.println("Plane Baggaging: FAILED \n");
+            System.out.println("Plane Baggaging on plane: " + planeNumber + " FAILED!\n");
         }
     }
-    public void boardPeople(){
+    public void boardPeople(int planeNumber, int planeSize){
         System.out.println("Plane boarding begun...");
+        switch(planeSize){
+            case 1:
+                timeToAction = 15000;
+                break;
+            case 2:
+                timeToAction = 20000;
+                break;
+            case 3:
+                timeToAction = 35000;
+                break;
+        }
         try{
-            Thread.sleep(20000);
-            System.out.println("Plane boarding: DONE! \n");
+            System.out.println("This will take: " + timeToAction + " seconds.");
+            Thread.sleep(timeToAction);
+            System.out.println("Plane: " + planeNumber + " boarding: DONE! \n");
         } catch (InterruptedException e) {
-            System.out.println("Plane boarding: FAILED!\n");
+            System.out.println("Plane: " + planeNumber + " boarding: FAILED!\n");
         }
     }
-    public void taxiDeparting(){
-        System.out.println("Plane Taxi to departing begun...");
+    public void taxiDeparting(int planeNumber, int planeSize){
+        System.out.println("Plane " + planeNumber + " Taxing to departing begun...");
+        switch(planeSize){
+            case 1:
+                timeToAction = 10000;
+                break;
+            case 2:
+                timeToAction = 10000;
+                break;
+            case 3:
+                timeToAction = 10000;
+                break;
+        }
         try{
-            Thread.sleep(20000);
-            System.out.println("Plane Taxing: DONE! \n");
+            System.out.println("This will take: " + timeToAction + " seconds.");
+            Thread.sleep(timeToAction);
+            System.out.println("Plane: " + planeNumber + " Taxing: DONE! \n");
         } catch (InterruptedException e) {
-            System.out.println("Plane Taxing: FAILED!\n");
+            System.out.println("Plane: " + planeNumber + " Taxing: FAILED!\n");
         }
     }
-    public void movePlain(){
-        System.out.println("Moving plane...");
+    public void movePlane(int planeNumber, int fromStall, int toStall, int planeSize){
+        System.out.println("Moving plane: " + planeNumber + " from: " + fromStall + " to: " + toStall);
+        switch(planeSize){
+            case 1:
+                timeToAction = 8000;
+                break;
+            case 2:
+                timeToAction = 5000;
+                break;
+            case 3:
+                timeToAction = 5000;
+                break;
+        }
         try{
-            Thread.sleep(20000);
-            System.out.println("Moving plane: DONE! \n");
+            System.out.println("This will take: " + timeToAction + " seconds.");
+            Thread.sleep(timeToAction);
+            System.out.println("Plane: " + planeNumber + " Moving: DONE!\n");
         } catch (InterruptedException e) {
-            System.out.println("Moving plane: FAILED!\n");
+            System.out.println("Plane: " + planeNumber + " Moving: FAILED!\n");
         }
     }
 

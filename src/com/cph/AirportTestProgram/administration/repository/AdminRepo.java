@@ -15,9 +15,7 @@ import java.util.List;
  */
 
 public class AdminRepo {
-
     public AdminRepo(){}
-
     private final String SELECT_ALL_STALLS = "SELECT * FROM station";
     private final String SELECT_ALL_STALLS_WITH_FLIGHTS = "SELECT flight.route_number, station.id "
     + "FROM flight__station JOIN station ON flight__station.fk_station_id = station.id "
@@ -30,13 +28,10 @@ public class AdminRepo {
     public List<Flight> seeAllFlightInfo()
     {
         List<Flight> flights = new ArrayList<>();
-
         try {
             Connection conn = ConnectionFactory.createNewConnection();
             Statement st = conn.createStatement();
             ResultSet res = st.executeQuery(SELECT_ALL_FLIGHTS);
-
-
             while(res.next())
             {
                 int id = res.getInt("id");
@@ -53,14 +48,11 @@ public class AdminRepo {
                 LocalDateTime depature1 = depature.toLocalDateTime();
 
                 flights.add(new Flight(id, serialNo, arrival1, depature1, arrivalOffset, departureOffset, fromDestination, toDestination, planeSize));
-
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
         return flights;
     }
 
