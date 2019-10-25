@@ -4,6 +4,7 @@ import com.cph.AirportTestProgram.administration.repository.AdminRepo;
 import com.cph.AirportTestProgram.models.Station;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,13 +23,19 @@ public class AdminRepoTest {
 
         List<Station> stations = repo.seeAllStations();
 
-        assertTrue(true);
+
        // assertEquals(station, station.getID());
     }
 
     @Test
-    public void dummy()
+    public void changeDepartureTest()
     {
-        assertTrue(true);
+        LocalDateTime originalDeparture = LocalDateTime.now();
+        int delayedInMinutes = 10;
+        LocalDateTime newDeparture = originalDeparture.plusMinutes(delayedInMinutes);
+
+
+       // assertEquals(newDeparture, repo.changeDeparture(delayedInMinutes));
     }
+
 }
