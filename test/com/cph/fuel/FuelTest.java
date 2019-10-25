@@ -1,3 +1,5 @@
+package com.cph.fuel;
+
 import com.cph.fuel.client.FuelService;
 import org.junit.jupiter.api.Test;
 
