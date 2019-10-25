@@ -26,7 +26,7 @@ public class GroundControlRepoTest extends GroundRepo
 
             preStatemnt.executeQuery();
 
-
+// hej
         } catch (SQLException e) {
             e.printStackTrace();
         }
