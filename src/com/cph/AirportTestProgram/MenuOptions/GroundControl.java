@@ -1,8 +1,14 @@
 package com.cph.AirportTestProgram.MenuOptions;
 
+import com.cph.AirportTestProgram.models.Flight;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class GroundControl{
+    private int timeToTaxi;
+    private int flightSize;
+
     public GroundControl(Scanner scanner, boolean go){
         go = true;
         while(go){
@@ -11,6 +17,8 @@ public class GroundControl{
             switch(scanner.nextInt()){
                 case 1:
                     //Taxi Arrival.
+                    waitingStall();
+                    assignStall();
                     taxiArrival();
                     break;
                 case 2:
@@ -55,15 +63,17 @@ public class GroundControl{
                 "9: Exit/Stop \n";
         System.out.println(menu);
     }
+    public void waitingStall(){}
+    public void assignStall(){}
     public void taxiArrival(){
         System.out.println("Plane taxing to stall begun...");
         try {
-            Thread.sleep(10000);
-            System.out.println("Plane Taxing: DONE! \n");
-        }
-        catch(InterruptedException e) {
-            System.out.println("Plane Taxing: FAILED \n");
-        }
+                Thread.sleep(timeToTaxi);
+                System.out.println("Plane Taxing: DONE! \n");
+            }
+            catch(InterruptedException e) {
+                System.out.println("Plane Taxing: FAILED \n");
+            }
     }
 
     public void deboardPeople(){
@@ -94,7 +104,7 @@ public class GroundControl{
             System.out.println("Plane Cleaning: FAILED! \n");
         }
     }
-    private void refuelPlane(){
+    public void refuelPlane(){
         System.out.println("Plane refueling begun...");
         try{
             Thread.sleep(20000);
@@ -103,7 +113,7 @@ public class GroundControl{
             System.out.println("Plane Refueling: FAILED\n");
         }
     }
-    private void baggageOn(){
+    public void baggageOn(){
         System.out.println("Plane baggaging begun...");
         try{
             Thread.sleep(25000);
@@ -112,7 +122,7 @@ public class GroundControl{
             System.out.println("Plane Baggaging: FAILED \n");
         }
     }
-    private void boardPeople(){
+    public void boardPeople(){
         System.out.println("Plane boarding begun...");
         try{
             Thread.sleep(20000);
@@ -121,7 +131,7 @@ public class GroundControl{
             System.out.println("Plane boarding: FAILED!\n");
         }
     }
-    private void taxiDeparting(){
+    public void taxiDeparting(){
         System.out.println("Plane Taxi to departing begun...");
         try{
             Thread.sleep(20000);
@@ -130,7 +140,7 @@ public class GroundControl{
             System.out.println("Plane Taxing: FAILED!\n");
         }
     }
-    private void movePlain(){
+    public void movePlain(){
         System.out.println("Moving plane...");
         try{
             Thread.sleep(20000);
@@ -139,6 +149,7 @@ public class GroundControl{
             System.out.println("Moving plane: FAILED!\n");
         }
     }
+
 
 
 

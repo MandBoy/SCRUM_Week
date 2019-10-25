@@ -1,5 +1,4 @@
 package com.cph.AirportTestProgram.Program;
-
 import com.cph.AirportTestProgram.MenuOptions.Administration;
 import com.cph.AirportTestProgram.MenuOptions.GroundControl;
 import com.cph.AirportTestProgram.MenuOptions.Simulation;
