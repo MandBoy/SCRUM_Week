@@ -24,7 +24,8 @@ public class AdminRepo {
     + "JOIN flight ON flight.id = flight__station.fk_flight_id "
     + "WHERE flight__station.reserved_to IS NULL";
     private final String SELECT_ALL_FLIGHTS = "SELECT * FROM flight";
-
+    private final String UPDATE_DEPARTURE_ON_FLIGHT = "UPDATE departure_offset FROM flight WHERE route_number =?";
+    private final String SELECT_ONE_FLIGHT = "SELECT * FROM flight WHERE route_number=?";
 
     public List<Flight> seeAllFlightInfo()
     {
@@ -121,4 +122,59 @@ public class AdminRepo {
 
     }
 
+    public void changeDeparture(int delayedInMinutes) {
+
+        try {
+            Connection conn = ConnectionFactory.createNewConnection();
+            PreparedStatement st = conn.prepareStatement(UPDATE_DEPARTURE_ON_FLIGHT);
+            st.setInt(1, delayedInMinutes);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Flight seeOneFlight(String routeNumber)
+    {
+        Flight flight = new Flight();
+
+        try {
+            Connection conn = ConnectionFactory.createNewConnection();
+            PreparedStatement st = conn.prepareStatement(SELECT_ONE_FLIGHT);
+            st.setString(1, routeNumber);
+            ResultSet res = st.executeQuery();
+
+            while (res.next())
+            {
+                int id = res.getInt("id");
+                String serialNo = res.getString("route_number");
+                Timestamp arrival = res.getTimestamp("arrival_time");
+                Timestamp depature = res.getTimestamp("departure_time");
+                int arrivalOffset = res.getInt("arrival_offset");
+                int departureOffset = res.getInt("departure_offset");
+                String fromDestination = res.getString("from_destination");
+                String toDestination = res.getString("to_destination");
+                int planeSize = res.getInt("plane_size");
+
+                LocalDateTime arrival1 = arrival.toLocalDateTime();
+                LocalDateTime depature1 = depature.toLocalDateTime();
+
+                flight.setId(id);
+                flight.setSerialNo(serialNo);
+                flight.setArrivalTime(arrival1);
+                flight.setDepartureTime(depature1);
+                flight.setArrivalOffset(arrivalOffset);
+                flight.setDepartureOffset(departureOffset);
+                flight.setFromDestination(fromDestination);
+                flight.setToDestination(toDestination);
+                flight.setPlaneSize(planeSize);
+
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flight;
+
+    }
 }
