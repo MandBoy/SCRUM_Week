@@ -8,6 +8,7 @@ public class GroundControl{
     private int timeToAction;
     private AdminRepo adminRepo = new AdminRepo();
     private Plane plane;
+    private int toStall;
 
     public GroundControl(Scanner scanner, boolean go){
         go = true;
@@ -29,21 +30,21 @@ public class GroundControl{
                     break;
                 case 3:
                     //Begin Cleaning Procedure. //Clean //Refuel //Baggage on.
-                    cleanPlane();
-                    refuelPlane();
-                    baggageOn();
+                    cleanPlane(plane);
+                    refuelPlane(plane);
+                    baggageOn(plane);
                     break;
                 case 4:
                     //Begin Boarding Procedure. //People on.
-                    boardPeople();
+                    boardPeople(plane);
                     break;
                 case 5:
                     //Taxi Departing.
-                    taxiDeparting();
+                    taxiDeparting(plane);
                     break;
                 case 6:
                     //Move a plain.
-                    movePlane();
+                    movePlane(plane, scanner);
                     break;
                 case 9:
                     System.out.println("Going back...");
@@ -72,29 +73,29 @@ public class GroundControl{
     public void assignStall(){}
     public void taxiArrival(Plane plane){
         System.out.println("Plane: " + plane.getPlaneNumber() + " taxing to stall: " + plane.getStallNumber() + " begun...");
-        switch(plane.getPlaneSize()){
-            case 1:
-                timeToAction = 12000;
-                break;
-            case 2:
-                timeToAction = 10000;
-                break;
-            case 3:
-                timeToAction = 15000;
-                break;
-        }
-        try{
-                System.out.println("This will take: " + timeToAction + " seconds.");
-                Thread.sleep(timeToAction);
-                System.out.println("Plane Taxing: "+ plane.getPlaneNumber() + " to: " + plane.getStallNumber() + " DONE!\n");
+            switch(plane.getPlaneSize()){
+                case 1:
+                    timeToAction = 12000;
+                    break;
+                case 2:
+                    timeToAction = 10000;
+                    break;
+                case 3:
+                    timeToAction = 15000;
+                    break;
             }
-            catch(InterruptedException e) {
-                System.out.println("Plane Taxing: "+ plane.Number + " FAILED!\n");
-            }
+            try{
+                    System.out.println("This will take: " + timeToAction + " seconds.");
+                    Thread.sleep(timeToAction);
+                    System.out.println("Plane Taxing: "+ plane.getPlaneNumber() + " to: " + plane.getStallNumber() + " DONE!\n");
+                }
+                catch(InterruptedException e){
+                    System.out.println("Plane Taxing: "+ plane.getPlaneNumber() + " FAILED!\n");
+                }
     }
     public void deboardPeople(Plane plane){
-        System.out.println("Plane: " + this.planeNumber + " deboarding people begun...");
-            switch(this.planeSize){
+        System.out.println("Plane: " + plane.getPlaneNumber() + " deboarding people begun...");
+            switch(plane.getPlaneSize()){
                 case 1:
                     timeToAction = 5000;
                 case 2:
@@ -105,15 +106,15 @@ public class GroundControl{
             try{
                 System.out.println("This will take: " + timeToAction + " seconds.");
                 Thread.sleep(timeToAction);
-                System.out.println("People deboarding: " + planeNumber + " DONE!\n");
+                System.out.println("People deboarding: " + plane.getPlaneNumber() + " DONE!\n");
             }
             catch(InterruptedException e) {
-                System.out.println("People debaording: " + planeNumber + " FAILED!\n");
+                System.out.println("People debaording: " + plane.getPlaneNumber() + " FAILED!\n");
             }
     }
-    public void deboardBaggage(int planeNumber, int planeSize){
-        System.out.println("Plane: " + planeNumber + " deboarding baggage begun...");
-        switch(planeSize){
+    public void deboardBaggage(Plane plane){
+        System.out.println("Plane: " + plane.getPlaneNumber() + " deboarding baggage begun...");
+        switch(plane.getPlaneSize()){
             case 1:
                 timeToAction = 10000;
             case 2:
@@ -124,14 +125,14 @@ public class GroundControl{
         try{
             System.out.println("This will take: " + timeToAction + " seconds.");
             Thread.sleep(timeToAction);
-            System.out.println("Baggage deboarding on plane: " + planeNumber + " DONE!\n");
+            System.out.println("Baggage deboarding on plane: " + plane.getPlaneNumber() + " DONE!\n");
         } catch (InterruptedException e) {
-            System.out.println("Baggage deboarding on plane: " +planeNumber + " FAILED!\n");
+            System.out.println("Baggage deboarding on plane: " + plane.getPlaneNumber() + " FAILED!\n");
         }
     }
-    public void cleanPlane(int planeNumber, int planeSize){
-        System.out.println("Plane: " + planeNumber + " cleaning begun...");
-        switch(planeSize){
+    public void cleanPlane(Plane plane){
+        System.out.println("Plane: " + plane.getPlaneNumber() + " cleaning begun...");
+        switch(plane.getPlaneSize()){
             case 1:
                 timeToAction = 30000;
                 break;
@@ -145,14 +146,14 @@ public class GroundControl{
         try{
             System.out.println("This will take: " + timeToAction + "Seconds.");
             Thread.sleep(timeToAction);
-            System.out.println("Plane Cleaning on plane: " + planeNumber + " DONE!\n");
+            System.out.println("Plane Cleaning on plane: " + plane.getPlaneNumber() + " DONE!\n");
         } catch (InterruptedException e) {
-            System.out.println("Plane Cleaning on plane: " + planeNumber + " FAILED!\n");
+            System.out.println("Plane Cleaning on plane: " + plane.getPlaneNumber() + " FAILED!\n");
         }
     }
-    public void refuelPlane(int planeNumber, int planeSize){
+    public void refuelPlane(Plane plane){
         System.out.println("Plane refueling begun...");
-        switch(planeSize){
+        switch(plane.getPlaneSize()){
             case 1:
                 timeToAction = 10000;
                 break;
@@ -166,14 +167,14 @@ public class GroundControl{
         try{
             System.out.println("This will take: " + timeToAction + " seconds.");
             Thread.sleep(timeToAction);
-            System.out.println("Plane Refueling on plane: " + planeNumber + " DONE!\n");
+            System.out.println("Plane Refueling on plane: " + plane.getPlaneNumber() + " DONE!\n");
         } catch (InterruptedException e) {
-            System.out.println("Plane Refueling on plane: " + planeNumber + " FAILED!\n");
+            System.out.println("Plane Refueling on plane: " + plane.getPlaneNumber() + " FAILED!\n");
         }
     }
-    public void baggageOn(int planeNumber, int planeSize){
-        System.out.println("Plane " + planeNumber + " baggaging begun...");
-        switch(planeSize){
+    public void baggageOn(Plane plane){
+        System.out.println("Plane " + plane.getPlaneNumber() + " baggaging begun...");
+        switch(plane.getPlaneSize()){
             case 1:
                 timeToAction = 15000;
                 break;
@@ -187,14 +188,14 @@ public class GroundControl{
         try{
             System.out.println("This will take: " + timeToAction + " seconds.");
             Thread.sleep(timeToAction);
-            System.out.println("Plane Baggaging on plane: " + planeNumber + " DONE!\n");
+            System.out.println("Plane Baggaging on plane: " + plane.getPlaneNumber() + " DONE!\n");
         } catch (InterruptedException e) {
-            System.out.println("Plane Baggaging on plane: " + planeNumber + " FAILED!\n");
+            System.out.println("Plane Baggaging on plane: " + plane.getPlaneNumber() + " FAILED!\n");
         }
     }
-    public void boardPeople(int planeNumber, int planeSize){
+    public void boardPeople(Plane plane){
         System.out.println("Plane boarding begun...");
-        switch(planeSize){
+        switch(plane.getPlaneSize()){
             case 1:
                 timeToAction = 15000;
                 break;
@@ -208,14 +209,14 @@ public class GroundControl{
         try{
             System.out.println("This will take: " + timeToAction + " seconds.");
             Thread.sleep(timeToAction);
-            System.out.println("Plane: " + planeNumber + " boarding: DONE! \n");
+            System.out.println("Plane: " + plane.getPlaneNumber() + " boarding: DONE! \n");
         } catch (InterruptedException e) {
-            System.out.println("Plane: " + planeNumber + " boarding: FAILED!\n");
+            System.out.println("Plane: " + plane.getPlaneNumber() + " boarding: FAILED!\n");
         }
     }
-    public void taxiDeparting(int planeNumber, int planeSize){
-        System.out.println("Plane " + planeNumber + " Taxing to departing begun...");
-        switch(planeSize){
+    public void taxiDeparting(Plane plane){
+        System.out.println("Plane " + plane.getPlaneNumber() + " Taxing to departing begun...");
+        switch(plane.getPlaneSize()){
             case 1:
                 timeToAction = 10000;
                 break;
@@ -229,14 +230,20 @@ public class GroundControl{
         try{
             System.out.println("This will take: " + timeToAction + " seconds.");
             Thread.sleep(timeToAction);
-            System.out.println("Plane: " + planeNumber + " Taxing: DONE! \n");
+            System.out.println("Plane: " + plane.getPlaneNumber() + " Taxing: DONE! \n");
         } catch (InterruptedException e) {
-            System.out.println("Plane: " + planeNumber + " Taxing: FAILED!\n");
+            System.out.println("Plane: " + plane.getPlaneNumber() + " Taxing: FAILED!\n");
         }
     }
-    public void movePlane(int planeNumber, int fromStall, int toStall, int planeSize){
-        System.out.println("Moving plane: " + planeNumber + " from: " + fromStall + " to: " + toStall);
-        switch(planeSize){
+    public void movePlane(Plane plane, Scanner scanner){
+        //plane.getPlaneStalls();
+        //ArrayList<Stalls> availableStalls = getAvailableStalls();
+        //for(Stalls stall : availableStalls){
+        //System.out.println(stall);
+        //while(toStall == null || !availableStalls.contains(toStall))
+        //toStall = scanner.nextInt();
+        System.out.println("Moving plane: " + plane.getPlaneNumber() + " from: " + plane.getStallNumber() + " to: " + toStall);
+        switch(plane.getPlaneSize()){
             case 1:
                 timeToAction = 8000;
                 break;
@@ -250,9 +257,9 @@ public class GroundControl{
         try{
             System.out.println("This will take: " + timeToAction + " seconds.");
             Thread.sleep(timeToAction);
-            System.out.println("Plane: " + planeNumber + " Moving: DONE!\n");
+            System.out.println("Plane: " + plane.getPlaneNumber() + " Moving: DONE!\n");
         } catch (InterruptedException e) {
-            System.out.println("Plane: " + planeNumber + " Moving: FAILED!\n");
+            System.out.println("Plane: " + plane.getPlaneNumber() + " Moving: FAILED!\n");
         }
     }
 
