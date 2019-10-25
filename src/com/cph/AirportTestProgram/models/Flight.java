@@ -95,7 +95,8 @@ public class Flight {
     {
         LocalDateTime expectedArrival = getArrivalTime().plusMinutes(getArrivalOffset());
         LocalDateTime expectedDeparture = getDepartureTime().plusMinutes(getArrivalOffset() + getDepartureOffset());
-        String flightInfo = "Flight number: " + getSerialNo() +"\n"
+        String flightInfo = "Flight ID: " + getId() + "\n"
+                + "Flight number: " + getSerialNo() +"\n"
                 + "Arrival time: " + getArrivalTime() + "\n"
                 + "Expected arrival time: " + expectedArrival + "\n"
                 + "Departure time: " + getDepartureTime() + "\n"

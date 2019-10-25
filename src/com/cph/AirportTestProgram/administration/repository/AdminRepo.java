@@ -23,7 +23,7 @@ public class AdminRepo {
     + "JOIN flight ON flight.id = flight__station.fk_flight_id "
     + "WHERE flight__station.reserved_to IS NULL";
     private final String SELECT_ALL_FLIGHTS = "SELECT * FROM flight";
-    private final String UPDATE_DEPARTURE_ON_FLIGHT = "UPDATE flight SET departure_offset=? WHERE route_number =?";
+    private final String UPDATE_DEPARTURE_ON_FLIGHT = "UPDATE flight SET departure_offset=? WHERE id =?";
     private final String SELECT_ONE_FLIGHT = "SELECT * FROM flight WHERE route_number=?";
   /*  private final String UPDATE_FLIGHT_ON_STALL = "UPDATE flight__station as FS JOIN "
             + "( SELECT id FROM flight WHERE route_number=?) AS flightID ON FS.fk_flight_id = flightID.id "
@@ -118,13 +118,13 @@ public class AdminRepo {
 
     }
 
-    public void changeDeparture(int delayedInMinutes, String route) {
+    public void changeDeparture(int delayedInMinutes, int id) {
 
         try {
             Connection conn = ConnectionFactory.createNewConnection();
             PreparedStatement st = conn.prepareStatement(UPDATE_DEPARTURE_ON_FLIGHT);
             st.setInt(1, delayedInMinutes);
-            st.setString(2, route);
+            st.setInt(2, id);
 
 
         } catch (SQLException e) {

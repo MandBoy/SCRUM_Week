@@ -29,8 +29,8 @@ public class Administration{
                     //getCrewStatus();
                     break;
                 case 5 :
-                    System.out.println("Please select flight: ");
-                    String flightNo = scanner.next();
+                    System.out.println("Please select flight with id number: ");
+                    int flightNo = scanner.nextInt();
                     System.out.println("Write number of minutes delayed: ");
                     int delayed = scanner.nextInt();
                     repo.changeDeparture(delayed, flightNo);
