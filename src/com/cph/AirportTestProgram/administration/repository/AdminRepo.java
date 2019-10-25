@@ -173,7 +173,7 @@ public class AdminRepo {
                 flight.setPlaneSize(planeSize);
 
             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
