@@ -21,8 +21,8 @@ public class GroundControlRepoTest extends GroundRepo
             Connection connection = ConnectionFactory.createNewConnection();
             PreparedStatement preStatemnt = connection.prepareStatement(UPDATE_FLIGHT_STATION);
 
-            preStatemnt.setInt(1, fk_flightId);
-            preStatemnt.setInt(2, fk_stationId);
+            preStatemnt.setInt(0, fk_flightId);
+            preStatemnt.setInt(1, fk_stationId);
 
             preStatemnt.executeQuery();
 
