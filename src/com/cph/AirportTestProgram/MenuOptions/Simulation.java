@@ -13,9 +13,20 @@ public class Simulation{
             System.out.print("Your Pick: ");
             switch(scanner.nextInt()){
                 case 1:
+                    create();
+                    break;
                 case 2:
+                    read();
+                    break;
                 case 3:
+                    update();
+                    break;
                 case 4:
+                    delete();
+                    break;
+                case 5:
+                    generateSimulation();
+                    break;
                 case 9:
                     System.out.println("Going back...");
                     go = false;
@@ -34,7 +45,10 @@ public class Simulation{
                 "9: Exit/stop\n";
         System.out.println(menu);
     }
-    public static void getTabels(){
-
-    }
+    public static void getTabels(){}
+    public static void create(){}
+    public static void read(){}
+    public static void update(){}
+    public static void delete(){}
+    public static void generateSimulation(){}
 }

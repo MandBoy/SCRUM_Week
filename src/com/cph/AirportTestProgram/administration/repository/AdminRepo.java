@@ -64,9 +64,6 @@ public class AdminRepo {
         return flights;
     }
 
-
-
-
     public List<StationInfo> seeAllOccupiedStations()
     {
         List<StationInfo> stations = new ArrayList<>();
