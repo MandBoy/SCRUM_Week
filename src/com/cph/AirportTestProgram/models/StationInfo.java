@@ -25,7 +25,7 @@ public class StationInfo {
     }
     public String toString()
     {
-        String info = "Stall number " + getId() + "is occupied by " + getSerial_number();
+        String info = "Stall number '" + getId() + "' is occupied by " + getSerial_number();
         return info;
     }
 }
