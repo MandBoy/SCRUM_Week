@@ -17,15 +17,19 @@ public class StallService {
 
     public Station findAvailableStall(int planeSize) {
 
+        //fetch a list of all stations
         List<Station> allStations = repo.seeAllStations();
 
+        //create a list of all stations id that are occupied
         List<Integer> occupiedIds = new ArrayList<>();
         for (StationInfo info : repo.seeAllOccupiedStations()) {
             occupiedIds.add(info.getId());
         }
 
+        //make null stall to return
         Station assignedStall = null;
         for (Station station : allStations) {
+            //if a still is not occupied, and that station size fits the plane size, assign the stall
             if (!occupiedIds.contains(station.getID()) && station.getType() == planeSize) {
                 assignedStall = station;
             }
