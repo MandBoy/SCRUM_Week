@@ -1,14 +1,8 @@
 package com.cph.administration.service;
 
-import com.cph.AirportTestProgram.administration.repository.AdminRepo;
 import com.cph.AirportTestProgram.administration.service.StallService;
-import com.cph.AirportTestProgram.models.Station;
-import com.cph.AirportTestProgram.models.StationInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,6 +17,12 @@ class StallServiceTest {
 
     @Test
     public void assignStallTest() {
+        //1-3 is the range of plane sizes
+        //assume that 0 and 4 will then fail
+        assertNull(stallService.findAvailableStall(0));
+        assertNull(stallService.findAvailableStall(4));
+
+        //assert 1-3 to be available
         assertNotNull(stallService.findAvailableStall(1));
         assertNotNull(stallService.findAvailableStall(2));
         assertNotNull(stallService.findAvailableStall(3));
